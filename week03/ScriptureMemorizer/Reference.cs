@@ -1,10 +1,10 @@
 /// <summary>Identifies a scripture passage by book, chapter, and verse range.</summary>
 public class Reference
 {
-    private string _book;
-    private int _chapter;
-    private int _startVerse;
-    private int _endVerse;
+    private readonly string _book;
+    private readonly int _chapter;
+    private readonly int _startVerse;
+    private readonly int _endVerse;
 
     public Reference(string book, int chapter, int verse)
         : this(book, chapter, verse, verse)
@@ -21,6 +21,11 @@ public class Reference
 
     public string GetDisplayText()
     {
-        return "";
+        if (_startVerse == _endVerse)
+        {
+            return $"{_book} {_chapter}:{_startVerse}";
+        }
+
+        return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
     }
 }

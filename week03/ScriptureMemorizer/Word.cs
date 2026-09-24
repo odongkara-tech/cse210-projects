@@ -1,7 +1,7 @@
-/// <summary>A word in the scripture passage and whether it is hidden.</summary>
+/// <summary>A word in a scripture passage and whether it has been hidden.</summary>
 public class Word
 {
-    private string _text;
+    private readonly string _text;
     private bool _isHidden;
 
     public Word(string text)
@@ -12,19 +12,27 @@ public class Word
 
     public void Hide()
     {
+        _isHidden = true;
     }
 
     public void Show()
     {
+        _isHidden = false;
     }
 
     public bool IsHidden()
     {
-        return false;
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-        return "";
+        if (!_isHidden)
+        {
+            return _text;
+        }
+
+        // Keep punctuation in place while replacing each letter with one underscore.
+        return string.Concat(_text.Select(character => char.IsLetter(character) ? "_" : character.ToString()));
     }
 }
