@@ -1,5 +1,7 @@
 using System;
 
+// Creativity beyond the core requirements: this version adds a menu-driven flow, a reusable activity base class,
+// animated countdown/spinner pauses, and varied reflection/listing prompts to create a more engaging mindfulness app.
 class Program
 {
     static void Main(string[] args)
