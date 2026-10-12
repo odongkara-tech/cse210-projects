@@ -8,9 +8,10 @@ class BreathingActivity : Activity
     {
     }
 
-    protected override void PerformActivity()
+    public override void Run()
     {
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        DisplayStartingMessage();
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
         bool inhale = true;
 
         while (DateTime.Now < endTime)
@@ -25,5 +26,7 @@ class BreathingActivity : Activity
             ShowCountdown(remaining);
             inhale = !inhale;
         }
+
+        DisplayEndingMessage();
     }
 }

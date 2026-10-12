@@ -2,11 +2,11 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 
-class Activity
+abstract class Activity
 {
-    protected string _name;
-    protected string _description;
-    protected int _duration;
+    private string _name;
+    private string _description;
+    private int _duration;
 
     public Activity(string name, string description)
     {
@@ -16,12 +16,7 @@ class Activity
 
     public int GetDuration() => _duration;
 
-    public virtual void Run()
-    {
-        DisplayStartingMessage();
-        PerformActivity();
-        DisplayEndingMessage();
-    }
+    public abstract void Run();
 
     protected void DisplayStartingMessage()
     {
@@ -43,10 +38,6 @@ class Activity
         ShowSpinner(3);
         Console.WriteLine($"You have completed the {_name} Activity for {_duration} seconds.");
         ShowCountdown(3);
-    }
-
-    protected virtual void PerformActivity()
-    {
     }
 
     protected int ReadDuration()

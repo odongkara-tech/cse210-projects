@@ -31,10 +31,11 @@ class ReflectionActivity : Activity
     {
     }
 
-    protected override void PerformActivity()
+    public override void Run()
     {
+        DisplayStartingMessage();
         Random random = new Random();
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
 
         Console.WriteLine($"Prompt: {_prompts[random.Next(_prompts.Count)]}");
 
@@ -49,5 +50,7 @@ class ReflectionActivity : Activity
                 break;
             }
         }
+
+        DisplayEndingMessage();
     }
 }

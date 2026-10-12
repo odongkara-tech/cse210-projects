@@ -19,14 +19,15 @@ class ListingActivity : Activity
     {
     }
 
-    protected override void PerformActivity()
+    public override void Run()
     {
+        DisplayStartingMessage();
         Random random = new Random();
         Console.WriteLine($"Prompt: {_prompts[random.Next(_prompts.Count)]}");
         Console.WriteLine("Take a moment to think and then begin listing items.");
 
         int itemCount = 0;
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
 
         while (DateTime.Now < endTime)
         {
@@ -48,5 +49,6 @@ class ListingActivity : Activity
         }
 
         Console.WriteLine($"You listed {itemCount} items.");
+        DisplayEndingMessage();
     }
 }
